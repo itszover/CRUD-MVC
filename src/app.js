@@ -1,10 +1,14 @@
 const express = require("express");
-const router = require("./router");
+const path = require("path");
+const indexRouter = require("./routes/index");
+const postRouter = require("./routes/posts");
 
 const app = express();
 
+app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
-app.use(router);
+app.use("/", indexRouter);
+app.use("/posts", postRouter);
 
 module.exports = app;
