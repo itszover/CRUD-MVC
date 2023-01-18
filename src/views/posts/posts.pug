@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+    h1 Posts
+    each post in posts 
+        div 
+            h3 #{post.title}
+            h4 #{post.createdAt.toLocaleDateString()}
+            h4 #{post.description}
+            button(type="button") Read more
+            hr 
