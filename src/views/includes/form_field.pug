@@ -1,11 +1,11 @@
 label(for="title") Título
-input(type="text", name="title" required)
+input(type="text", name="title" placeholder="Título" value=(post.title))
 
 label(for="description") Descrição
-input(type="text", name="description" required)
+input(type="text", name="description" placeholder="Descrição" value=(post.description))
 
 label(for="text") Texto
-textarea(name="text", cols="30", rows="10" required)
+textarea(name="text", cols="30", rows="10" placeholder="Texto" required) #{post.text}
 
-a(href="/posts") Cancelar 
+a(href="/posts") Cancelar
 button(type="submit") Postar

@@ -2,10 +2,11 @@ extends ../layout
 
 block content
     h1 Posts
+    a(href="/posts/new"): button(type="button") Nova postagem
     each post in posts 
-        div 
+        div
             h3 #{post.title}
             h4 #{post.createdAt.toLocaleDateString()}
             h4 #{post.description}
-            button(type="button") Read more
-            hr 
+            a(href=`posts/${post.id}`): button(type="button") Ler mais
+            hr

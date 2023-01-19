@@ -1,0 +1,9 @@
+extends ../layout
+
+block content
+    h1 #{post.title}
+    small #{post.createdAt.toLocaleString()}
+    a(href="/posts"): button(type="button") Ver todas
+    a(href="/posts/edit"): button(type="button") Editar
+    h3 #{post.description}
+    p #{post.text}

@@ -1,14 +1,10 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const path = require("path");
+
 const indexRouter = require("./routes/index");
 const postRouter = require("./routes/posts");
 
-const DATABASE = process.env.DATABASE;
 const app = express();
-
-mongoose.set("strictQuery", false);
-mongoose.connect(DATABASE);
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");

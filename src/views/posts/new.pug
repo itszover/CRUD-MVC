@@ -2,4 +2,5 @@ extends ../layout
 
 block content
     h1 Nova postagem
-    include ../includes/form_field.pug    
+    form(action="/posts", method="post")
+        include ../includes/form_field.pug
