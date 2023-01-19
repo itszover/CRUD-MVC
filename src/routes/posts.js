@@ -21,6 +21,7 @@ router.get("/:slug", async (req, res) => {
 
 router.post("/", async (req, res) => {
   const { title, description, text } = req.body;
+
   let post = new Post({
     title,
     description,
@@ -34,6 +35,11 @@ router.post("/", async (req, res) => {
     console.error(err);
     res.render("posts/new", { post: post });
   }
+});
+
+router.delete("/:id", async (req, res) => {
+  await Post.findByIdAndDelete(req.params.id);
+  res.redirect("/");
 });
 
 module.exports = router;
