@@ -1,5 +1,6 @@
-extends ../layout
+extends ../layout 
 
 block content
     h1 Editar postagem
-    include ../includes/form_field.pug
+    form(action=`/posts/${post.id}?_method=PUT`, method="post")
+        include ../includes/form_field.pug

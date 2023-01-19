@@ -8,7 +8,11 @@ block content
             h3 #{post.title}
             h4 #{post.createdAt.toLocaleDateString()}
             h4 #{post.description}
+            
             a(href=`posts/${post.slug}`): button(type="button") Ler mais
-            a(href="#"): button(type="button") Editar
-            a(href="#"): button(type="button") Deletar
+
+            a(href=`/posts/edit/${post.id}`): button(type="button") Editar
+
+            form(action=`/posts/${post.id}?_method=DELETE`, method="post") 
+                button(type="submit") Deletar
             hr
