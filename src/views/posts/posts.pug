@@ -1,18 +1,17 @@
 extends ../layout
 
 block content
-    h1 Posts
-    a(href="/posts/new"): button(type="button") Nova postagem
-    each post in posts 
-        div
-            h3 #{post.title}
-            h4 #{post.createdAt.toLocaleDateString()}
-            h4 #{post.description}
-            
-            a(href=`posts/${post.slug}`): button(type="button") Ler mais
-
-            a(href=`/posts/edit/${post.id}`): button(type="button") Editar
-
-            form(action=`/posts/${post.id}?_method=DELETE`, method="post") 
-                button(type="submit") Deletar
-            hr
+    div.post-container 
+        h1 Posts
+        a(href="/posts/new"): button(type="button") + Nova postagem
+        each post in posts
+                div.post-card
+                    h3 #{post.title}
+                    h4.date #{post.createdAt.toLocaleDateString()}
+                    h4.description #{post.description}
+                    
+                    div.button-box
+                        a(href=`posts/${post.slug}`): button(type="button") Ler mais
+                        a(href=`/posts/edit/${post.id}`): button(type="button") Editar
+                        form(action=`/posts/${post.id}?_method=DELETE`, method="post") 
+                            button(type="submit") Deletar

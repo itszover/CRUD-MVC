@@ -12,11 +12,71 @@
 }
 
 body {
+  height: 100vh;
+
   font-family: "Poppins", sans-serif;
   background-color: var(--body-bg-color);
   color: var(--purple);
 }
 
 main {
+  height: 100%;
   text-align: center;
+}
+
+.date {
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+
+.post-container {
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.post-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  width: 80%;
+  border: 2px solid var(--purple);
+  border-radius: 4px;
+
+  padding: 4rem;
+  margin: 0.5rem;
+}
+
+.button-box {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  background: none;
+  color: var(--purple);
+  border: 1px solid var(--purple);
+  border-radius: 4px;
+
+  width: 5rem;
+  padding: 10px;
+  margin: 1px;
+
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+
+  transition: 300ms ease-in-out;
+}
+
+button:hover {
+  cursor: pointer;
+
+  color: var(--body-bg-color);
+  background-color: var(--purple);
 }
