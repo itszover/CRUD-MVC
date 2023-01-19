@@ -8,5 +8,5 @@ block content
             h3 #{post.title}
             h4 #{post.createdAt.toLocaleDateString()}
             h4 #{post.description}
-            a(href=`posts/${post.id}`): button(type="button") Ler mais
+            a(href=`posts/${post.slug}`): button(type="button") Ler mais
             hr
