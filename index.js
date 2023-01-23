@@ -6,6 +6,8 @@ const DATABASE_URI = process.env.DATABASE_URI;
 const PORT = process.env.PORT;
 
 mongoose.set("strictQuery", false);
-mongoose.connect(DATABASE_URI);
+mongoose.connect(DATABASE_URI).catch((err) => {
+  console.error(err);
+});
 
 app.listen(PORT);
