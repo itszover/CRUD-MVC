@@ -31,5 +31,5 @@ postSchema.pre("validate", function (next) {
 
   next();
 });
-//
+
 module.exports = mongoose.model("Post", postSchema);
