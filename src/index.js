@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const app = require("./src/app");
+const app = require("./app");
 
 const DATABASE_URI = process.env.DATABASE_URI;
 const PORT = process.env.PORT;
