@@ -1,9 +1,10 @@
 const Post = require("../models/Post");
+const postRepository = require("../repositories/post");
 
 module.exports = {
   async index(req, res) {
-    const posts = await Post.find().sort({ createdAt: "desc" });
-    res.render("posts/posts", { posts: posts });
+    const result = await postRepository.findAll();
+    res.render("posts/posts", { posts: result });
   },
 
   showNew(req, res) {
@@ -11,15 +12,14 @@ module.exports = {
   },
 
   async showEdit(req, res) {
-    const post = await Post.findById(req.params.id);
-    res.render("posts/edit", { post: post });
+    const result = await postRepository.findById(req.params.id);
+    res.render("posts/edit", { post: result });
   },
 
   async show(req, res) {
-    const post = await Post.findOne({ slug: req.params.slug });
-
-    if (post == null) res.redirect("/posts");
-    res.render("posts/show", { post: post });
+    const result = await postRepository.findBySlug(req.params.slug);
+    if (result == null) res.redirect("/posts");
+    res.render("posts/show", { post: result });
   },
 
   async store(req, res, next) {
@@ -33,7 +33,7 @@ module.exports = {
   },
 
   async delete(req, res) {
-    await Post.findByIdAndDelete(req.params.id);
+    await postRepository.delete(req.params.id);
     res.redirect("/posts");
   },
 };
