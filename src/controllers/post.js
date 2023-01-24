@@ -50,24 +50,4 @@ module.exports = {
     await postRepository.delete(req.params.id);
     res.redirect("/posts");
   },
-
-  savePostAndRedirect(path) {
-    return async (req, res) => {
-      const { title, description, text } = req.body;
-
-      let post = req.post;
-
-      post.title = title;
-      post.description = description;
-      post.text = text;
-
-      try {
-        post = await post.save();
-        res.redirect(`/posts/${post.slug}`);
-      } catch (err) {
-        console.error(err);
-        res.render(`posts/${path}`, { post: post });
-      }
-    };
-  },
 };
