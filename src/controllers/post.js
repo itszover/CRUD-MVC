@@ -15,19 +15,19 @@ module.exports = {
     res.render("posts/edit", { post: post });
   },
 
-  async showThis(req, res) {
+  async show(req, res) {
     const post = await Post.findOne({ slug: req.params.slug });
 
     if (post == null) res.redirect("/posts");
     res.render("posts/show", { post: post });
   },
 
-  async create(req, res, next) {
+  async store(req, res, next) {
     req.post = new Post();
     next();
   },
 
-  async edit(req, res, next) {
+  async update(req, res, next) {
     req.post = await Post.findById(req.params.id);
     next();
   },

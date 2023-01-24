@@ -5,10 +5,10 @@ const postController = require("../controllers/post");
 router.get("/", postController.index);
 router.get("/new", postController.showNew);
 router.get("/edit/:id", postController.showEdit);
-router.get("/:slug", postController.showThis);
+router.get("/:slug", postController.show);
 
-router.post("/", postController.create, savePostAndRedirect("new"));
-router.put("/:id", postController.edit, savePostAndRedirect("edit"));
+router.post("/", postController.store, savePostAndRedirect("new"));
+router.put("/:id", postController.update, savePostAndRedirect("edit"));
 router.delete("/:id", postController.delete);
 
 function savePostAndRedirect(path) {
