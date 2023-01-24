@@ -3,6 +3,7 @@ extends ../layout
 block content
     div.post-container 
         h1 Posts
+        a(href="/"): button(type="button") Home
         a(href="/posts/new"): button(type="button") + Nova postagem
         each post in posts
                 div.post-card
