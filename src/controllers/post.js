@@ -22,18 +22,52 @@ module.exports = {
     res.render("posts/show", { post: result });
   },
 
-  async store(req, res, next) {
-    req.post = new Post();
-    next();
+  async store(req, res) {
+    try {
+      req.post = new Post();
+      const result = await postRepository.save(req.post, req.body);
+
+      res.redirect(`/posts/${result.slug}`);
+    } catch (err) {
+      console.error(err);
+      res.render("posts/new", { post: req.post });
+    }
   },
 
-  async update(req, res, next) {
-    req.post = await Post.findById(req.params.id);
-    next();
+  async update(req, res) {
+    try {
+      req.post = await postRepository.findById(req.params.id);
+      const result = await postRepository.save(req.post, req.body);
+
+      res.redirect(`/posts/${result.slug}`);
+    } catch (err) {
+      console.error(err);
+      res.render("posts/edit", { post: req.post });
+    }
   },
 
   async delete(req, res) {
     await postRepository.delete(req.params.id);
     res.redirect("/posts");
+  },
+
+  savePostAndRedirect(path) {
+    return async (req, res) => {
+      const { title, description, text } = req.body;
+
+      let post = req.post;
+
+      post.title = title;
+      post.description = description;
+      post.text = text;
+
+      try {
+        post = await post.save();
+        res.redirect(`/posts/${post.slug}`);
+      } catch (err) {
+        console.error(err);
+        res.render(`posts/${path}`, { post: post });
+      }
+    };
   },
 };

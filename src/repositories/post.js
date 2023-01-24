@@ -1,7 +1,15 @@
 const Post = require("../models/Post");
 
 module.exports = {
-  create() {},
+  save(item, input) {
+    const { title, description, text } = input;
+
+    item.title = title;
+    item.description = description;
+    item.text = text;
+
+    return query(item.save());
+  },
 
   findAll() {
     return query(Post.find().sort({ createdAt: "desc" }));
