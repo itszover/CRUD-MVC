@@ -1,11 +1,13 @@
-label(for="title") Título
-input(type="text", name="title" placeholder="Título" value=(post.title))
+div.new-edit-container
+    div.new-edit
+        label(for="title") Título
+        input(type="text", name="title" placeholder="Título" value=(post.title))
 
-label(for="description") Descrição
-input(type="text", name="description" placeholder="Descrição" value=(post.description))
+        label(for="description") Descrição
+        input(type="text", name="description" placeholder="Descrição" value=(post.description))
 
-label(for="text") Texto
-textarea(name="text", cols="30", rows="10" placeholder="Texto" required) #{post.text}
+        label(for="text") Texto
+        textarea(class="the-text" name="text", cols="30", rows="10" placeholder="Texto" required) #{post.text}
 
-a(href="/posts") Cancelar
-button(type="submit") Postar
+        a(href="/posts") Cancelar
+        button(type="submit") Postar
